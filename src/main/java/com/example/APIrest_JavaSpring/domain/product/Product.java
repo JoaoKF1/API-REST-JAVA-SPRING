@@ -3,8 +3,6 @@ package com.example.APIrest_JavaSpring.domain.product;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.UUID;
-
 @Table(name="product")
 @Entity(name="product")
 @Getter
@@ -14,7 +12,8 @@ import java.util.UUID;
 @EqualsAndHashCode(of = "id")
 public class Product {
 
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     private String name;

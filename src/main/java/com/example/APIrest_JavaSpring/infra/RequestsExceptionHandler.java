@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class RequestsExceptionHandler {
 
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity threat404() {
-        return ResponseEntity.badRequest().body("Dado não encontrado, insira um ID existente");
+    public ResponseEntity <String> handleEntityNotFoundException(EntityNotFoundException ex) {
+        return ResponseEntity.badRequest().body("Erro: " + ex.getMessage());
+    }
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity <String> handleIllegalArgumentException(IllegalArgumentException ex){
+        return ResponseEntity.badRequest().body("Erro: " + ex.getMessage());
     }
 }
