@@ -1,7 +1,7 @@
 package com.example.APIrest_JavaSpring.controllers;
 
 import com.example.APIrest_JavaSpring.domain.product.Product;
-import com.example.APIrest_JavaSpring.domain.product.ResponseProduct;
+import com.example.APIrest_JavaSpring.dtos.ResponseProduct;
 import com.example.APIrest_JavaSpring.repositories.ProductRepository;
 import com.example.APIrest_JavaSpring.domain.product.RequestProduct;
 import com.example.APIrest_JavaSpring.service.ProductService;

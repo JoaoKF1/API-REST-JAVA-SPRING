@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres-container:
+    image: postgres:15
+    container_name: postgres-container2
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: product
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  wiremock-container:
+    image: wiremock/wiremock:2.35.0
+    container_name: wiremock-container2
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./src/main/resources/wiremock:/home/wiremock:rw
+
+  app-container:
+    build:
+      context: .
+    container_name: app-container2
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-container:5432/product
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-container
+      - wiremock-container
+
+volumes:
+  postgres_data:

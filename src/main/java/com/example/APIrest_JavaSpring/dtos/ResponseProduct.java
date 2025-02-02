@@ -1,4 +1,6 @@
-package com.example.APIrest_JavaSpring.domain.product;
+package com.example.APIrest_JavaSpring.dtos;
+
+import com.example.APIrest_JavaSpring.domain.product.Product;
 
 public record ResponseProduct (
         String id,
