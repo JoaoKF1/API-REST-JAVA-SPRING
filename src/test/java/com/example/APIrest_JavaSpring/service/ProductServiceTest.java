@@ -9,11 +9,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.*;
@@ -27,11 +25,7 @@ import static org.mockito.Mockito.*;
 class ProductServiceTest {
 
     @Mock
-    @Autowired
     private ProductRepository productRepository;
-
-    @Mock
-    private RequestProduct requestProduct;
 
     @InjectMocks
     private ProductService productService;
@@ -109,6 +103,7 @@ class ProductServiceTest {
         verify(productRepository).save(any(Product.class));
         verify(productRepository).findById(id);
     }
+
     @Test
     void shouldUpdateProductNotSucessfully() {
         String id = "1";
