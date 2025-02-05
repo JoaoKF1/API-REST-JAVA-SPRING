@@ -2,14 +2,14 @@ package com.example.APIrest_JavaSpring.dtos;
 
 import com.example.APIrest_JavaSpring.domain.product.Product;
 
-public record ResponseProduct (
+public record ProductResponseDTO(
         String id,
         String name,
         Integer price_in_cents,
         boolean active
 
 ){
-    public ResponseProduct(Product product) {
+    public ProductResponseDTO(Product product) {
         this(
                 product.getId(),
                 product.getName(),
