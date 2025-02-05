@@ -1,7 +1,7 @@
 package com.example.APIrest_JavaSpring.controllers;
 
 import com.example.APIrest_JavaSpring.domain.product.Product;
-import com.example.APIrest_JavaSpring.dtos.ResponseProduct;
+import com.example.APIrest_JavaSpring.dtos.ProductResponseDTO;
 import com.example.APIrest_JavaSpring.repositories.ProductRepository;
 import com.example.APIrest_JavaSpring.domain.product.RequestProduct;
 import com.example.APIrest_JavaSpring.service.ProductService;
@@ -44,9 +44,9 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseProduct> updateProduct(@PathVariable String id, @RequestBody @Valid RequestProduct data) {
+    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable String id, @RequestBody @Valid RequestProduct data) {
         Product updatedProduct = productService.updateProduct(id, data);
-        return ResponseEntity.ok(new ResponseProduct(updatedProduct));
+        return ResponseEntity.ok(new ProductResponseDTO(updatedProduct));
     }
 
     @DeleteMapping("/{id}")
